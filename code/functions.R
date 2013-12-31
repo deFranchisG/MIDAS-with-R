@@ -1,8 +1,9 @@
 rm(list=ls())
-setwd("/Users/carlo/Dropbox/R/Midas/donnees")
-
+# setwd("/Users/carlo/Dropbox/R/Midas/data")
+setwd("/home/giuliano/Dropbox/R/Midas/data")
 library(Matrix)
 library(ggplot2)
+library(compiler)
 
 Mat<-function(a,deg){
   #mat : matrice vide
@@ -573,6 +574,21 @@ loop_rmsfe<-function(h,z,data,arg,init){
   return(list(graph_rmsfe,rmsfe,courbe,sigma2))
 }
 
+
+
+#fastening of the code
+Mat<-cmpfun(Mat)
+find_first_row<-cmpfun(find_first_row)
+first_row<-cmpfun(first_row)
+polynomial_add_on<-cmpfun(polynomial_add_on)
+base_reg<-cmpfun(base_reg)
+col_names<-cmpfun(col_names)
+regression_midas<-cmpfun(regression_midas)
+monom<-cmpfun(monom)
+coefficient<-cmpfun(coefficient)
+coefficient_prod<-cmpfun(coefficient_prod)
+fc<-cmpfun(fc)
+loop_rmsfe<-cmpfun(loop_rmsfe)
 
 
 save(list = ls(all=TRUE), file = "functions.RData")

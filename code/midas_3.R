@@ -1,6 +1,7 @@
 # 
-# rm(list=ls())
-setwd("/Users/carlo/Dropbox/R/Midas/donnees")
+rm(list=ls())
+# setwd("/Users/carlo/Dropbox/R/Midas/data")
+setwd("/home/giuliano/Dropbox/R/Midas/data")
 load("midas_data.RData")
 load("functions.RData")
 
@@ -231,15 +232,18 @@ h<-60
 # return(list(graph_rmsfe,rmsfe,courbe,sigma2))
 # }
 
-
-
+start<-Sys.time()
 z<-30
 arg<-c("climat",8,2,"umidas","month","spread",251,4,"polynomial","day","dow_jones",251,4,"polynomial","day")
 h<-60
 
 
-fin<-loop_rmsfe(60,30,data,arg,init)
+fin<-loop_rmsfe(60,50,data,arg,init)
+end<-Sys.time()
 
+end 
+start
+end-start
 # fin[[1]]
 fin[[2]]
 fin[[3]]
